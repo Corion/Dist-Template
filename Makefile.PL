@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker qw(WriteMakefile);
 my $eumm_version = $ExtUtils::MakeMaker::VERSION;
 $eumm_version =~ s/_//;
 
-my $module = 'WWW::Mechanize::Chrome';
+my $module = 'My::Distribution';
 (my $main_file = "lib/$module.pm" ) =~ s!::!/!g;
 (my $distbase = $module) =~ s!::!-!g;
 

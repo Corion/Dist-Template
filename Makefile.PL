@@ -110,7 +110,7 @@ sub get_module_info { %module }
 if( ! caller ) {
     # I should maybe use something like Shipwright...
     regen_README($main_file);
-    regen_EXAMPLES();
+    regen_EXAMPLES() if -d 'examples';
     WriteMakefile1(get_module_info);
 };
 
@@ -232,11 +232,12 @@ sub regen_EXAMPLES {
     if ($perl =~/\s/) {
         $perl = qq{"$perl"};
     };
+    (my $example_file = $main_file) =~ s!\.pm$!/Examples.pm!;
     my $examples = `$perl -w examples/gen_examples_pod.pl`;
     if ($examples) {
-        warn "(Re)Creating lib/WWW/Mechanize/Chrome/Examples.pm\n";
+        warn "(Re)Creating $example_file\n";
         $examples =~ s/\r\n/\n/g;
-        update_file( 'lib/WWW/Mechanize/Chrome/Examples.pm', $examples );
+        update_file( $example_file, $examples );
     };
 };
 

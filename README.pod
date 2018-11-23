@@ -1,6 +1,6 @@
 =head1 NAME
 
-Dist::Template - CORIONs distrubtion template
+Dist::Template - CORIONs distribution template
 
 =head1 DESCRIPTION
 

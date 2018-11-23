@@ -7,6 +7,28 @@ Dist::Template - CORIONs distribution template
 This directory is a template for a fresh or existing distribution of Perl code
 ready-made for CPAN.
 
+The main idea is that C<Makefile.PL> is the main source of truth for the
+distribution. From this source of truth, the following information gets derived:
+
+=over 4
+
+=item *
+
+C<META.json>, C<META.yml>
+
+=back
+
+The approach follows the idea that you have one "main" file in your
+distribution. From that main file the following information is extracted:
+
+=over 4
+
+=item Distribution version number
+
+=item README.* contents
+
+=back
+
 =head1 USAGE
 
 The C<Makefile.PL> is dual-purpose. One use is to maintain documentation
@@ -92,6 +114,80 @@ Commit everything
 
 Release using L<Module::Release>
     
+=back
+
+=head1 FILES AND THEIR USE
+
+The distribution is based on L<ExtUtils::MakeMaker>, so most of the files
+are relevant for L<ExtUtils::MakeMaker>.
+
+=over 4
+
+=item C<.appveyor.yml>
+
+A rough template to test a plain Perl distribution on Appveyor. The distribution
+still needs to be enabled for testing on Appveyor.
+
+=item C<.gitignore>
+
+As I use C<git> for version control, this file is a template of files that
+do not need to go under version control. I'm a firm believer in the approach
+that everything should be under version control, even files that are completely
+derived from other files. This is why C<META.*> is not excluded here.
+
+=item C<.travis.yml>
+
+A rough template to test a plain Perl distribution on Travis CI. The
+distribution still needs to be enabled for testing on Travis CI.
+
+=item C<Changes>
+
+List of changes between versions.
+
+=item C<LICENSE>
+
+A copy of the Artistic License 2, because I release most of my code under it.
+
+=item C<Makefile.PL>
+
+The heart of maintaining a distribution.
+
+=item C<MANIFEST.SKIP>
+
+List of regexps excluding items from the distribution on CPAN.
+
+=item C<README.*>
+
+Various incarnations of information extracted from the main file of the
+distribution.
+
+=item C<t/>
+
+The module test suite lives in here.
+
+=item C<tools/>
+
+A directory keeping maintenance tools. You can always delete this.
+
+=item C<xt/>
+
+Author tests. Run these with
+
+    perl Makefile.PL
+    make
+    prove -bl xt/
+
+=back
+
+=head1 SEE ALSO
+
+=over 4
+
+=item L<Module::Starter>
+
+This creates filled-out templates, but is mainly geared towards starting fresh
+instead of upgrading any existing directory to a CPAN distribution.
+
 =back
 
 =cut

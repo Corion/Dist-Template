@@ -1,0 +1,97 @@
+=head1 NAME
+
+Dist::Template - CORIONs distrubtion template
+
+=head1 DESCRIPTION
+
+This directory is a template for a fresh or existing distribution of Perl code
+ready-made for CPAN.
+
+=head1 USAGE
+
+The C<Makefile.PL> is dual-purpose. One use is to maintain documentation
+extracts for Github and CPAN during development. The second use is to install
+the module at installation time.
+
+=head1 SETUP STEPS
+
+=over 4
+
+=item 1
+
+Initialize C<git> (or whatever) version control in your distribution directory
+
+=item 2
+
+Copy the template into your new (or existing) distribution
+
+=item 3
+
+Edit C<Makefile.PL> to list all prerequisites.
+
+=item 4
+
+Edit C<MANIFEST.SKIP> to exclude stuff you don't want.
+
+=item 5
+
+Generate C<README.md> for Github.
+
+    perl -w Makefile.PL
+
+This will blindly overwrite your existing C<README.md>. This is why
+you committed everything to version control before.
+
+=item 6
+
+Check that the author tests pass, or make them pass:
+
+    perl Makefile.PL
+    make
+    prove -bl xt/
+
+=item 7
+
+Add all files to version control
+
+=back
+
+=head1 RELEASE STEPS
+
+=over 4
+
+=item 1
+
+Bump the version
+
+    perl-reversion -bump
+
+=item 2
+
+Update the meta-files
+
+    perl -w tools/update-meta.pl
+
+=item 3
+
+Add release date to C<Changes>
+
+=item 4
+
+(Re)run the author tests
+
+    perl Makefile.PL
+    make
+    prove -bl xt/
+
+=item 5
+
+Commit everything
+
+=item 6
+
+Release using L<Module::Release>
+    
+=back
+
+=cut

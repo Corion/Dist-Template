@@ -13,6 +13,7 @@ $eumm_version =~ s/_//;
 my $module = 'My::Distribution';
 (my $main_file = "lib/$module.pm" ) =~ s!::!/!g;
 (my $distbase = $module) =~ s!::!-!g;
+my $distlink = $distbase;
 
 my @tests = map { glob $_ } 't/*.t', 't/*/*.t';
 
@@ -25,8 +26,8 @@ my %module = (
         "meta-spec" => { version => 2 },
         resources => {
             repository => {
-                web => "https://github.com/Corion/$distbase",
-                url => "git://github.com/Corion/$distbase.git",
+                web => "https://github.com/Corion/$distlink",
+                url => "git://github.com/Corion/$distlink.git",
                 type => 'git',
             }
         },
@@ -196,8 +197,8 @@ INSTALL
         $parser->parse_from_file($_[0]);
         my $readme_mkdn = <<STATUS . $parser->as_markdown;
 
-[![Travis Build Status](https://travis-ci.org/Corion/$distbase.svg?branch=master)](https://travis-ci.org/Corion/$distbase)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/Corion/$distbase?branch=master&svg=true)](https://ci.appveyor.com/project/Corion/$distbase)
+[![Travis Build Status](https://travis-ci.org/Corion/$distlink.svg?branch=master)](https://travis-ci.org/Corion/$distlink)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/Corion/$distlink?branch=master&svg=true)](https://ci.appveyor.com/project/Corion/$distlink)
 
 STATUS
         update_file( 'README.mkdn', $readme_mkdn );

@@ -29,7 +29,7 @@ my %module = (
                 web => "https://github.com/Corion/$distlink",
                 url => "git://github.com/Corion/$distlink.git",
                 type => 'git',
-            }
+            },
             bugtracker => "https://rt.cpan.org/Public/Dist/Display.html?Name=$distbase",
             license    => "https://dev.perl.org/licenses/",
         },
@@ -165,7 +165,7 @@ tool you use to manage your installation of Perl, e.g. any of
   cpan  .
   cpanp -i .
 
-Consult http://www.cpan.org/modules/INSTALL.html for further instruction.
+Consult https://www.cpan.org/modules/INSTALL.html for further instruction.
 Should you wish to install this module manually, the procedure is
 
   perl Makefile.PL

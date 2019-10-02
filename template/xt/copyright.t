@@ -9,13 +9,23 @@ my $this_year = strftime '%Y', localtime;
 
 my $last_modified_year = 0;
 
+my $is_checkout = -d '.git';
+
 my @dirs = grep { -d $_ } ('scripts', 'examples', 'bin', 'lib');
 
 my @files;
 sub collect {
     return if (! m{(\.pm|\.pl|\.pod) \z}xmsi);
 
-    my $modified_year = strftime('%Y', localtime((stat($_))[9]));
+    my $modified_ts;
+    if( $is_checkout ) {
+        # diag `git log -1 --pretty="format:%ct" "$_"`;
+        $modified_ts = `git log -1 --pretty="format:%ct" "$_"`;
+    } else {
+        $modified_ts = (stat($_))[9];
+    }
+    my $modified_year = strftime('%Y', localtime($modified_ts));
+
 
     open my $fh, '<', $_
         or die "Couldn't read $_: $!";

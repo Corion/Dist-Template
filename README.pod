@@ -45,7 +45,10 @@ Initialize C<git> (or whatever) version control in your distribution directory
 
 =item 2
 
-Copy the template into your new (or existing) distribution
+Copy the contents of the C<template/> directory into your new (or existing)
+distribution
+
+  cp -rp ../Dist-Template/template/. .
 
 =item 3
 
@@ -59,7 +62,7 @@ Edit C<MANIFEST.SKIP> to exclude stuff you don't want.
 
 Generate C<README.md> for Github.
 
-    perl -w Makefile.PL
+    perl Makefile.PL
 
 This will blindly overwrite your existing C<README.md>. This is why
 you committed everything to version control before.
@@ -92,11 +95,13 @@ Bump the version
 
 Update the meta-files
 
-    perl -w tools/update-meta.pl
+    perl ../Dist-Template/tools/update-meta.pl
 
 =item 3
 
-Add release date to C<Changes>
+Add release date to C<Changes>. The release date must be formatted like this:
+
+  YYYY-MM-DD 0.01
 
 =item 4
 
@@ -112,8 +117,8 @@ Commit everything
 
 =item 6
 
-Release using L<Module::Release>
-    
+Release using L<Module::Release> and L<CPAN::Uploader>
+
 =back
 
 =head1 FILES AND THEIR USE

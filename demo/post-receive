@@ -1,0 +1,8 @@
+#!/bin/sh
+git --work-tree=/home/corion/github-rss --git-dir=/home/corion/GitHub-RSS.git checkout -f
+PERL5LIB= /home/corion/perl-5.24/bin/cpanm --installdeps /home/corion/github-rss -l /home/corion/github-rss/extlib
+
+# Migrate the database
+# We use the system Perl here...
+PERL5LIB= /home/corion/bin/update-db.pl --from dbi:SQLite:dbname=/home/corion/corion.net/github-rss/issues.sqlite --to HEAD --file sql/create.sql --git-dir /home/corion/GitHub-RSS.git/
+

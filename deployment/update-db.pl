@@ -1,12 +1,4 @@
 #!/usr/bin/perl
-=for article
-# use the system Perl to setup/maintain the local Perl
-
-    apt install libsql-translator-perl
-
-
-sqlite: create diff between SQL and existing table, upgrade missing columns/alter table width
-=cut
 
 use strict;
 use DBIx::RunSQL;

@@ -5,6 +5,7 @@ maint
 .travis.yml
 .appveyor.yml
 ^\.github
+^\.prove$
 Makefile$
 ^blib
 ^pm_to_blib
@@ -24,3 +25,4 @@ Makefile$
 ^WWW-Mechanize-Chrome
 ^frame-\d+.png
 ^demo/
+^\.carmel/

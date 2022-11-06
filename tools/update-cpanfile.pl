@@ -56,10 +56,10 @@ sub add_section( $name, @items ) {
                 $ver = defined $ver ? ", '$ver'" : "";
                 "requires '$mod'$ver"
             } @items;
-        my $s = $name ? <<SECTION : $lines;
+        my $s = $name ? <<SECTION : $lines . ";";
 on '$name' => sub {
     $lines;
-}
+};
 SECTION
         $res = $s;
     };
@@ -89,8 +89,9 @@ SECTION
 #}
 
 my $cpanfile = join "\n",
-    add_section( '', map { [ $_ => $module_info{PREREQ_PM}->{$_} ] } keys %{ $module_info{PREREQ_PM}}),
-    add_section( 'test', map { [ $_ => $module_info{PREREQ_PM}->{$_} ] } keys %{ $module_info{TEST_REQUIRES}});
+    grep { /\S/ }
+    add_section( '', map { [ $_ => $module_info{PREREQ_PM}->{$_} ] } sort keys %{ $module_info{PREREQ_PM}}),
+    add_section( 'test', map { [ $_ => $module_info{PREREQ_PM}->{$_} ] } sort keys %{ $module_info{TEST_REQUIRES}});
     ;
 
 update_file( "$distbase/cpanfile", $cpanfile );

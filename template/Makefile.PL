@@ -40,7 +40,7 @@ my %module = (
         x_static_install => 1, # we are pure Perl and don't do anything fancy
     },
 
-    MIN_PERL_VERSION => '5.010', # I use // in some places
+    MIN_PERL_VERSION => '5.020', # I use signatures
 
     'LICENSE'=> 'perl',
 
@@ -51,54 +51,9 @@ my %module = (
 
     PREREQ_PM => {
         'Exporter'           => 5, # for 'import'
-        'POSIX'              => 0, # for 'setsid' on POSIXish systems
-        'File::Spec'         => 0,
-
-        'Filter::signatures' => '0.09',
-        'Carp'               => 0,
-        'Future'             => 0,
-        'Try::Tiny'          => 0,
-        # This actually is optional
-        # You need one of the following event loops:
-        # AnyEvent, IO::Async, Mojolicious
-        'AnyEvent'           => 0,
-        'AnyEvent::Future'   => 0,
-        'AnyEvent::WebSocket::Client' => 0,
-
-        # This is a developer-only prerequisite, but oh well
-        'Algorithm::Loops'   => 0,
-
-        'Log::Log4perl'      => 0, # configurable logging
-
-        'URI'                => 0,    # For URL handling
-        'URI::file'          => 0,    # For URL handling, just to be explicit
-        'Future::HTTP'       => 0.06, # fixes Mojolicious error handling
-        'JSON'               => 0,
-        'Moo'                => 2, # for some hashes-as-objects
-
-        'HTTP::Response'                   => 0,
-        'HTTP::Headers'                    => 0,
-        'Scalar::Util'                     => 0, # we need 'weaken' and 'blessed'
-		'MIME::Base64'                     => 0,
-        'File::Basename'                   => 0,
-        'WWW::Mechanize::Link'             => 0,
-        'HTML::Selector::XPath'            => 0,
-        'IO::Socket::INET'                 => 0,
-        'Storable'                         => 0, # for dclone
-        'Object::Import'                   => 0,
-
-        # for extracting element screenshots, loaded dynamically
-        'Imager'                           => 0,
-        'Imager::File::PNG'                => 0,
     },
     TEST_REQUIRES => {
-        'Test::More'   => 0,
-        'Test::Deep'   => 0,
-        'Data::Dumper' => 0,
-        'Image::Info'  => 0,
-        'Test::HTTP::LocalServer' => 0.61, # we want the improved IPC
-        'URI'          => 0,
-        'URI::file'    => 0,
+        'Test2::V0'    => 0,
     },
 
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },

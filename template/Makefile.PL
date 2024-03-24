@@ -111,6 +111,7 @@ sub regen_README {
     my( $file, $version ) = @_;
     eval {
         # Get description
+        my $readme = join "\n",
             pod_section($file, 'NAME', 'no heading' ),
             pod_section($file, 'DESCRIPTION' ),
             <<VERSION,

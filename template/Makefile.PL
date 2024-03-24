@@ -42,7 +42,7 @@ my %module = (
 
     MIN_PERL_VERSION => '5.020', # I use signatures
 
-    'LICENSE'=> 'perl_5',
+    'LICENSE'=> 'artistic_2',
 
     PL_FILES            => {},
     BUILD_REQUIRES => {
